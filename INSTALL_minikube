@@ -1,0 +1,22 @@
+
+https://qiita.com/yuichi1992_west/items/571016084c110d15320e
+
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod 755 kubectl
+sudo mv kubectl /usr/local/bin
+
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+chmod 755 minikube
+sudo mv minikube /usr/local/bin
+
+$ sudo systemctl start docker
+$ minikube start 
+
+$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND                   CREATED          STATUS          PORTS                                                                                                                                  NAMES
+76e8cdc0e94d   gcr.io/k8s-minikube/kicbase:v0.0.44   "/usr/local/bin/entr…"   22 minutes ago   Up 21 minutes   127.0.0.1:32768->22/tcp, 127.0.0.1:32769->2376/tcp, 127.0.0.1:32770->5000/tcp, 127.0.0.1:32771->8443/tcp, 127.0.0.1:32772->32443/tcp   minikube
+
+
+
+

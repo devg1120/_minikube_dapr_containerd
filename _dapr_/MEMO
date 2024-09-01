@@ -1,0 +1,42 @@
+https://github.com/dapr/quickstarts/
+
+$ cd quickstarts/tutorials/hello-kubernetes
+
+
+$ sudo systemctl start docker
+$ minikube start 
+
+$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND                   CREATED          STATUS          PORTS                                                                                                                                  NAMES
+76e8cdc0e94d   gcr.io/k8s-minikube/kicbase:v0.0.44   "/usr/local/bin/entr…"   22 minutes ago   Up 21 minutes   127.0.0.1:32768->22/tcp, 127.0.0.1:32769->2376/tcp, 127.0.0.1:32770->5000/tcp, 127.0.0.1:32771->8443/tcp, 127.0.0.1:32772->32443/tcp   minikube
+
+
+$ dapr init -k --dev
+ 
+⌛  Making the jump to hyperspace...
+ℹ️  Note: To install Dapr using Helm, see here: https://docs.dapr.io/getting-started/install-dapr-kubernetes/#install-with-helm-advanced
+
+ℹ️  Container images will be pulled from Docker Hub
+✅  Deploying the Dapr control plane with latest version to your cluster...
+✅  Deploying the Dapr dashboard with latest version to your cluster...
+✅  Deploying the Dapr Redis with 17.14.5 version to your cluster...
+✅  Deploying the Dapr Zipkin with latest version to your cluster...
+ℹ️  Applying "statestore" component to Kubernetes "default" namespace.
+ℹ️  Applying "pubsub" component to Kubernetes "default" namespace.
+ℹ️  Applying "appconfig" zipkin configuration to Kubernetes "default" namespace.
+✅  Success! Dapr has been installed to namespace dapr-system. To verify, run `dapr status -k' in your terminal. To get started, go here: https://docs.dapr.io/getting-started
+
+
+
+$ dapr status -k
+  NAME                   NAMESPACE    HEALTHY  STATUS   REPLICAS  VERSION  AGE  CREATED              
+  dapr-scheduler-server  dapr-system  False    Running  1         1.14.1   3m   2024-09-01 17:16.18  
+  dapr-operator          dapr-system  True     Running  1         1.14.1   3m   2024-09-01 17:16.16  
+  dapr-sidecar-injector  dapr-system  True     Running  1         1.14.1   3m   2024-09-01 17:16.16  
+  dapr-dashboard         dapr-system  True     Running  1         0.14.0   3m   2024-09-01 17:16.32  
+  dapr-placement-server  dapr-system  True     Running  1         1.14.1   3m   2024-09-01 17:16.17  
+  dapr-sentry            dapr-system  True     Running  1         1.14.1   3m   2024-09-01 17:16.16  
+
+
+
+

@@ -1,0 +1,29 @@
+https://qiita.com/n-yamanaka/items/86d4073d403cfba63dd3
+
+*** nerdctl コマンド
+
+nerdctl run -d -p 8080:80 --name nginx-test nginx
+
+
+*** nerdctl compose コマンド
+
+docker-compose.yaml
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8080:80"
+コンテナの起動
+sudo nerdctl compose up -d --build
+
+
+
+nerdctl ps
+nerdctl stop 4e266a470a30
+
+sudo systemctl start containerd
+sudo systemctl status containerd
+sudo systemctl enable containerd
+
